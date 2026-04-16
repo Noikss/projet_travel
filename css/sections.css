@@ -1,0 +1,300 @@
+/* секции */
+.section { padding: 80px 0; }
+
+.section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.section__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section__title.center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.link-more {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--teal);
+}
+
+/* карточки туров */
+.tours-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.tour-card {
+    border-radius: var(--r);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--sh);
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.tour-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sh-h);
+}
+
+.tour-card__img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.tour-card__img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.4), transparent 60%);
+}
+
+.tour-card__badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    z-index: 2;
+    background: var(--gold);
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .72rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.tour-card__badge--new {
+    background: var(--teal);
+    color: #fff;
+}
+
+.tour-card__fav {
+    position: absolute;
+    top: 12px; right: 12px;
+    z-index: 2;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.25);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--tr);
+}
+
+.tour-card__fav:hover,
+.tour-card__fav.active {
+    background: rgba(255,255,255,.9);
+    color: #e03;
+}
+
+.tour-card__body    { padding: 18px; }
+
+.tour-card__name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.tour-card__meta {
+    display: flex;
+    gap: 12px;
+    font-size: .82rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.tour-card__rating {
+    font-size: .85rem;
+    color: var(--gold-d);
+    margin-bottom: 14px;
+}
+
+.tour-card__rating span {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.tour-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tour-card__price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--teal);
+}
+
+.btn-cart {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .8rem;
+    background: var(--teal);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background var(--tr), transform var(--tr);
+}
+
+.btn-cart:hover {
+    background: var(--teal-d);
+    transform: scale(1.04);
+}
+
+/* преимущества */
+.why { background: linear-gradient(135deg, #f0fafa, #e8f8f8); }
+
+.why__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.why__item {
+    background: #fff;
+    border-radius: var(--r);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--sh);
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.why__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sh-h);
+}
+
+.why__icon {
+    width: 56px; height: 56px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+}
+
+.why__item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.why__item p {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* отзывы */
+.reviews__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.review-card {
+    background: #f8fefe;
+    border-radius: var(--r);
+    padding: 28px;
+    border: 1px solid rgba(0,166,166,.12);
+}
+
+.review-card__head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.review-card__avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: .9rem;
+    flex-shrink: 0;
+}
+
+.review-card__name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+.review-card__stars { color: var(--gold-d); font-size: .85rem; }
+
+.review-card p {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.review-card__tour {
+    font-size: .8rem;
+    color: var(--teal);
+    font-weight: 600;
+}
+
+/* cta */
+.cta {
+    background: linear-gradient(135deg, var(--teal), var(--teal-d));
+    padding: 70px 0;
+}
+
+.cta__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.cta__text h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.cta__text p { color: rgba(255,255,255,.85); }
+
+.btn-accent {
+    flex-shrink: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    background: var(--gold);
+    color: #333;
+    padding: 16px 36px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(242,201,76,.4);
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.btn-accent:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(242,201,76,.5);
+}

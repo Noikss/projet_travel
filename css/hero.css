@@ -1,0 +1,213 @@
+/* слайдер */
+.hero { margin-top: var(--hh); }
+
+.slider {
+    position: relative;
+    height: 90vh;
+    min-height: 560px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity .7s ease;
+}
+
+.slide--active { opacity: 1; z-index: 1; }
+
+.slide__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,.65) 0%, rgba(0,0,0,.2) 60%, transparent 100%);
+}
+
+.slide__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 160px;
+}
+
+.slide__tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .8rem;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    width: fit-content;
+}
+
+.slide__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 14px;
+}
+
+.slide__sub {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,.85);
+    max-width: 460px;
+}
+
+.slider__arrow {
+    position: absolute;
+    top: 63%; transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    border: 1.5px solid rgba(182, 177, 243, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--tr);
+}
+
+.slider__arrow:hover { background: rgba(255,255,255,.35); }
+.slider__arrow--prev { left: 24px; }
+.slider__arrow--next { right: 24px; }
+
+.slider__dots {
+    position: absolute;
+    bottom: 155px;
+    left: 50%; transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.slider__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.4);
+    cursor: pointer;
+    border: none;
+    transition: var(--tr);
+}
+
+.slider__dot.active {
+    background: #fff;
+    width: 10px;
+    height: 10px;
+    transform: scale(1.2);
+}
+
+/* поиск */
+.search-bar {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%;
+    z-index: 20;
+    padding-bottom: 32px;
+}
+
+.search-bar__inner {
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(16px);
+    border-radius: var(--r);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    box-shadow: 0 8px 40px rgba(0,0,0,.18);
+}
+
+.search-field {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+}
+
+.search-field label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: .78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 6px;
+}
+
+.search-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--r-sm);
+    font-size: .95rem;
+    color: var(--text);
+    background: #f8f8f8;
+    font-family: inherit;
+    transition: border-color var(--tr);
+}
+
+.search-field input:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: #fff;
+}
+
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 2px solid var(--teal);
+    border-radius: var(--r-sm);
+    z-index: 50;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    overflow: hidden;
+}
+
+.search-suggestions li {
+    padding: 10px 14px;
+    font-size: .9rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background var(--tr);
+}
+
+.search-suggestions li:hover {
+    background: var(--bg-light);
+    color: var(--teal);
+}
+
+.btn-search {
+    flex-shrink: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    background: var(--teal);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: var(--r-sm);
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    transition: background var(--tr), transform var(--tr);
+}
+
+.btn-search:hover {
+    background: var(--teal-d);
+    transform: translateY(-2px);
+}

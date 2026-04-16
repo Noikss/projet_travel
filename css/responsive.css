@@ -1,0 +1,205 @@
+/* адаптив по ТЗ: 1920px, 768px, 375px */
+
+/* ===== до 1200px ===== */
+@media (max-width: 1200px) {
+    .tours-grid,
+    .why__grid          { grid-template-columns: repeat(2, 1fr); }
+    .catalog-grid       { grid-template-columns: repeat(2, 1fr); }
+    .catalog-layout     { grid-template-columns: 240px 1fr; }
+    .gallery-grid       { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ===== 768px (планшет по ТЗ) ===== */
+@media (max-width: 768px) {
+
+    :root { --hh: 60px; }
+
+    .container { padding: 0 16px; }
+
+    /* шапка: z-index 200 в header.css, nav выезжает поверх с z-index 9000 */
+    .logo__text  { font-size: 1.1rem; }
+    .logo__icon  { width: 32px; height: 32px; }
+    .btn-login   { padding: 7px 14px; font-size: .78rem; }
+    .burger      { display: flex; }
+
+    .header__actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* бургер-меню — выезжает сверху вниз */
+    .nav {
+        display: flex !important;
+        position: fixed;
+        top: var(--hh);
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,.15);
+        transform: translateY(-120%);
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
+        z-index: 9000;              /* выше header (200) */
+        border-top: 2px solid var(--teal);
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .nav.open {
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+    .nav__link {
+        display: block;
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--border);
+        color: var(--text);
+    }
+    .nav__link:last-child  { border-bottom: none; }
+    .nav__link:hover,
+    .nav__link.active      { background: rgba(0,166,166,.07); color: var(--teal); }
+
+    /* бургер → крестик */
+    .burger span {
+        display: block;
+        width: 24px; height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: .3s;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* слайдер */
+    .slider              { height: 62vh; min-height: 350px; }
+    .slide__title        { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+    .slide__sub          { font-size: .9rem; }
+    .slide__content      { padding-bottom: 230px; }
+    .slider__arrow       { width: 38px; height: 38px; font-size: 1rem; }
+    .slider__arrow--prev { left: 10px; }
+    .slider__arrow--next { right: 10px; }
+    /* точки поднимаем выше поиска — hero.css уже 155px, здесь усиливаем */
+    .slider__dots        { bottom: 170px; }
+
+    /* поиск — выходит из абсолют-позиции, встаёт под слайдером */
+    .search-bar {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        padding: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+    .search-bar__inner {
+        flex-direction: column;
+        border-radius: 0;
+        padding: 16px;
+        gap: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,.10);
+    }
+    .search-field        { width: 100%; flex: none; min-width: 0; }
+    .search-field input  { padding: 12px 14px; font-size: .9rem; }
+    .btn-search {
+        width: 100%;
+        text-align: center;
+        padding: 13px;
+        border-radius: var(--r-sm);
+    }
+
+    /* главная */
+    .section         { padding: 48px 0; }
+    .section__header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .section__title  { font-size: 1.4rem; }
+    .tours-grid      { grid-template-columns: 1fr; gap: 16px; }
+    .why__grid       { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .why__item       { padding: 20px 14px; }
+    .reviews__grid   { grid-template-columns: 1fr; gap: 14px; }
+    .cta__inner      { flex-direction: column; text-align: center; gap: 20px; }
+    .cta             { padding: 44px 0; }
+    .btn-accent      { padding: 13px 24px; font-size: .9rem; }
+
+    /* футер */
+    .footer__inner  { grid-template-columns: 1fr; gap: 24px; padding-bottom: 28px; }
+    .footer         { padding-top: 32px; }
+    .footer__bottom { display: none; }
+
+    /* page-hero */
+    .page-hero    { padding: 32px 0 28px; }
+    .page-hero h1 { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+    .page-hero p  { font-size: .9rem; }
+
+    /* каталог */
+    .catalog-layout  { grid-template-columns: 1fr; gap: 20px; }
+    .filters         { position: static; }
+    .catalog-grid    { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .catalog__top    { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .catalog-sort    { width: 100%; }
+    .tour-card__img  { height: 170px; }
+    .tour-card__body { padding: 12px; }
+    .tour-card__name { font-size: .92rem; }
+
+    /* корзина */
+    .cart-layout    { grid-template-columns: 1fr; }
+    .cart-summary   { position: static; }
+    .cart-item      { gap: 12px; padding: 12px; }
+    .cart-item__img { width: 72px; height: 52px; }
+
+    /* оформление */
+    .checkout-layout { grid-template-columns: 1fr; }
+    .checkout-form   { padding: 18px; }
+    .form-row        { grid-template-columns: 1fr; gap: 0; }
+
+    /* галерея */
+    .gallery-section    { padding: 32px 0 48px; }
+    .gallery-grid       { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 8px; }
+    .gallery-filters    { gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+    .gf-btn             { padding: 7px 12px; font-size: .78rem; }
+    .gallery-item--wide,
+    .gallery-item--tall { grid-column: span 1; grid-row: span 1; }
+    .lightbox img       { max-width: 96vw; max-height: 70vh; }
+    .lightbox__nav      { width: 36px; height: 36px; font-size: .9rem; }
+    .lightbox__prev     { left: 4px; }
+    .lightbox__next     { right: 4px; }
+
+    /* контакты */
+    .contacts-section   { padding: 32px 0 48px; }
+    .contacts-layout    { grid-template-columns: 1fr; gap: 18px; }
+    .contact-card       { padding: 18px; }
+    .map-section iframe { height: 240px; }
+    .msg-btns           { flex-wrap: wrap; gap: 8px; }
+
+    /* модалка */
+    .modal { padding: 22px 16px; margin: 0 12px; max-width: calc(100% - 24px); }
+
+    /* тост */
+    .toast { right: 12px; left: 12px; text-align: center; font-size: .85rem; }
+}
+
+/* ===== 375px (мобильный по ТЗ) ===== */
+@media (max-width: 375px) {
+    .container          { padding: 0 12px; }
+    .section            { padding: 36px 0; }
+    .logo__text         { font-size: .95rem; }
+    .logo__icon         { width: 28px; height: 28px; }
+    .slide__title       { font-size: 1.5rem; }
+    .slide__sub         { display: none; }
+    .why__grid          { grid-template-columns: 1fr; }
+    .catalog-grid       { grid-template-columns: 1fr; }
+    .tour-card__footer  { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .btn-cart           { width: 100%; text-align: center; }
+    .gallery-grid       { grid-template-columns: 1fr; grid-auto-rows: 180px; }
+    .page-btn           { width: 30px; height: 30px; font-size: .78rem; }
+    .modal              { padding: 16px 12px; }
+    .search-bar__inner  { padding: 12px; gap: 10px; }
+    .footer__socials    { flex-wrap: wrap; }
+}

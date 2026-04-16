@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТрэвелМи</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container header__inner">
+        <a href="index.html" class="logo">
+            <img class="logo__icon" src="img/browser-svgrepo-com.svg">
+            <span class="logo__text">ТрэвелМи</span>
+        </a>
+        <nav class="nav" id="nav">
+            <a href="index.html" class="nav__link active">Главная</a>
+            <a href="catalog.html" class="nav__link">Туры</a>
+            <a href="gallery.html" class="nav__link">Галерея</a>
+            <a href="contacts.html" class="nav__link">Контакты</a>
+        </nav>
+        <div class="header__actions">
+            <a href="cart.html" class="cart-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+            <button class="btn-login" id="loginBtn">Войти</button>
+            <span class="user-greeting hidden" id="userGreeting"></span>
+            <button class="burger" id="burger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- слайдер -->
+<section class="hero">
+    <div class="slider" id="slider">
+        <div class="slide slide--active" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')">
+            <div class="slide__overlay"></div>
+            <div class="slide__content container">
+                <span class="slide__tag">Топ направление</span>
+                <h1 class="slide__title">Мальдивы</h1>
+                <p class="slide__sub">Кристально чистые воды Индийского океана</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1920&q=80')">
+            <div class="slide__overlay"></div>
+            <div class="slide__content container">
+                <span class="slide__tag">Популярно</span>
+                <h1 class="slide__title">Турция</h1>
+                <p class="slide__sub">Лазурное побережье и богатая история</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1920&q=80')">
+            <div class="slide__overlay"></div>
+            <div class="slide__content container">
+                <span class="slide__tag">Экскурсионный</span>
+                <h1 class="slide__title">Италия</h1>
+                <p class="slide__sub">Вечные города, искусство и кухня</p>
+            </div>
+        </div>
+        <button class="slider__arrow slider__arrow--prev" id="prevSlide">&#8592;</button>
+        <button class="slider__arrow slider__arrow--next" id="nextSlide">&#8594;</button>
+        <div class="slider__dots" id="sliderDots"></div>
+    </div>
+
+    <div class="search-bar container">
+        <div class="search-bar__inner">
+            <div class="search-field">
+                <label>Куда</label>
+                <input type="text" id="searchDest" placeholder="Страна или курорт" autocomplete="off">
+                <ul class="search-suggestions hidden" id="searchSuggestions"></ul>
+            </div>
+            <div class="search-field">
+                <label>Дата вылета</label>
+                <input type="date" id="searchDate">
+            </div>
+            <div class="search-field">
+                <label>Туристов</label>
+                <input type="number" min="1" max="20" value="2">
+            </div>
+            <button class="btn-search" id="searchBtn">Найти тур</button>
+        </div>
+    </div>
+</section>
+
+<!-- популяр направления -->
+<section class="section popular">
+    <div class="container">
+        <div class="section__header">
+            <h2 class="section__title">Популярные направления</h2>
+            <a href="catalog.html" class="link-more">Все туры →</a>
+        </div>
+        <div class="tours-grid">
+
+            <div class="tour-card" data-id="1">
+                <div class="tour-card__img" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80')">
+                    <span class="tour-card__badge">Хит</span>
+                    <button class="tour-card__fav" onclick="toggleFav(1)">♡</button>
+                </div>
+                <div class="tour-card__body">
+                    <h3 class="tour-card__name">Мальдивы</h3>
+                    <div class="tour-card__meta"><span>🏖 Пляжный</span><span>10 ночей</span></div>
+                    <div class="tour-card__rating">★★★★★ <span>4.9</span></div>
+                    <div class="tour-card__footer">
+                        <span class="tour-card__price">от 89 900 ₽</span>
+                        <button class="btn-cart" onclick="addToCart({id:1,name:'Мальдивы — 10 ночей',price:89900,img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=300&q=80'})">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-id="2">
+                <div class="tour-card__img" style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80')">
+                    <button class="tour-card__fav" onclick="toggleFav(2)">♡</button>
+                </div>
+                <div class="tour-card__body">
+                    <h3 class="tour-card__name">Турция — Анталья</h3>
+                    <div class="tour-card__meta"><span>🏖 Пляжный</span><span>7 ночей</span></div>
+                    <div class="tour-card__rating">★★★★☆ <span>4.6</span></div>
+                    <div class="tour-card__footer">
+                        <span class="tour-card__price">от 42 500 ₽</span>
+                        <button class="btn-cart" onclick="addToCart({id:2,name:'Турция — 7 ночей',price:42500,img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=300&q=80'})">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-id="3">
+                <div class="tour-card__img" style="background-image: url('https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=600&q=80')">
+                    <span class="tour-card__badge tour-card__badge--new">Новинка</span>
+                    <button class="tour-card__fav" onclick="toggleFav(3)">♡</button>
+                </div>
+                <div class="tour-card__body">
+                    <h3 class="tour-card__name">Италия — Рим, Флоренция</h3>
+                    <div class="tour-card__meta"><span>🏛 Экскурсионный</span><span>8 ночей</span></div>
+                    <div class="tour-card__rating">★★★★★ <span>4.8</span></div>
+                    <div class="tour-card__footer">
+                        <span class="tour-card__price">от 67 000 ₽</span>
+                        <button class="btn-cart" onclick="addToCart({id:3,name:'Италия — 8 ночей',price:67000,img:'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=300&q=80'})">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tour-card" data-id="4">
+                <div class="tour-card__img" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80')">
+                    <button class="tour-card__fav" onclick="toggleFav(4)">♡</button>
+                </div>
+                <div class="tour-card__body">
+                    <h3 class="tour-card__name">ОАЭ — Дубай</h3>
+                    <div class="tour-card__meta"><span>🏙 Городской</span><span>5 ночей</span></div>
+                    <div class="tour-card__rating">★★★★★ <span>4.7</span></div>
+                    <div class="tour-card__footer">
+                        <span class="tour-card__price">от 55 000 ₽</span>
+                        <button class="btn-cart" onclick="addToCart({id:4,name:'ОАЭ — 5 ночей',price:55000,img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=300&q=80'})">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- почему мы -->
+<section class="section why">
+    <div class="container">
+        <h2 class="section__title center">Почему выбирают нас</h2>
+        <div class="why__grid">
+
+            <div class="why__item">
+                <div class="why__icon"><img src="img/earth-svgrepo-com.svg" alt="" width="40" height="40"></div>
+                <h3>5000+ направлений</h3>
+                <p>Туры в более чем 80 стран мира. Найдём путешествие для любого бюджета и интереса.</p>
+            </div>
+
+            <div class="why__item">
+                <div class="why__icon"><img src="img/price-tag-dolar-svgrepo-com.svg" alt="" width="40" height="40"></div>
+                <h3>Гарантия цены</h3>
+                <p>Нашли дешевле? Снизим цену. Мы мониторим рынок и предлагаем лучшие условия.</p>
+            </div>
+
+            <div class="why__item">
+                <div class="why__icon"><img src="img/support-online-center-svgrepo-com.svg" alt="" width="40" height="40"></div>
+                <h3>Поддержка 24/7</h3>
+                <p>Наши менеджеры на связи в любое время суток — до, во время и после поездки.</p>
+            </div>
+
+            <div class="why__item">
+                <div class="why__icon"><img src="img/bank-card-svgrepo-com.svg" alt="" width="40" height="40"></div>
+                <h3>Рассрочка 0%</h3>
+                <p>Бронируйте сейчас, платите частями. Без переплат и скрытых комиссий.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- отзывы -->
+<section class="section reviews">
+    <div class="container">
+        <h2 class="section__title center">Отзывы наших клиентов</h2>
+        <div class="reviews__grid">
+
+            <div class="review-card">
+                <div class="review-card__head">
+                    <div class="review-card__avatar" style="background: #00A6A6">АМ</div>
+                    <div>
+                        <div class="review-card__name">Анна Миронова</div>
+                        <div class="review-card__stars">★★★★★</div>
+                    </div>
+                </div>
+                <p>Бронировала тур в Мальдивы через ТрэвелМи — всё прошло без единой проблемы. Отель превзошёл ожидания, трансфер был организован идеально. Уже планирую следующую поездку!</p>
+                <span class="review-card__tour">Мальдивы, август 2025</span>
+            </div>
+
+            <div class="review-card">
+                <div class="review-card__head">
+                    <div class="review-card__avatar" style="background: #F2C94C; color: #333">ДК</div>
+                    <div>
+                        <div class="review-card__name">Дмитрий Козлов</div>
+                        <div class="review-card__stars">★★★★★</div>
+                    </div>
+                </div>
+                <p>Ездили с семьёй в Турцию — 2 взрослых и ребёнок. Менеджер помог подобрать отель с детской анимацией. Цена оказалась на 8 000 ₽ ниже, чем у других агентств. Спасибо!</p>
+                <span class="review-card__tour">Турция — Анталья, июль 2025</span>
+            </div>
+
+            <div class="review-card">
+                <div class="review-card__head">
+                    <div class="review-card__avatar" style="background: #2d6a6a">ЕС</div>
+                    <div>
+                        <div class="review-card__name">Елена Соколова</div>
+                        <div class="review-card__stars">★★★★☆</div>
+                    </div>
+                </div>
+                <p>Экскурсионный тур по Италии — незабываемо! Рим, Флоренция, Венеция за 8 дней. Гид был профессиональным и интересным. Единственный минус — хотелось больше свободного времени.</p>
+                <span class="review-card__tour">Италия, сентябрь 2025</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container cta__inner">
+        <div class="cta__text">
+            <h2>Готовы к путешествию мечты?</h2>
+            <p>Оставьте заявку — наш менеджер подберёт лучший тур под ваш бюджет и пожелания.</p>
+        </div>
+        <a href="catalog.html" class="btn-accent">Выбрать тур</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__col">
+                <a href="index.html" class="logo logo--white">
+                    <img class="logo__icon" src="img/browser-web-internet-network-svgrepo-com.svg">
+                    <span class="logo__text">ТрэвелМи</span>
+                </a>
+                <p class="footer__desc">Ваш надёжный партнёр в мире путешествий с 2018 года.</p>
+                                <div class="footer__socials">
+                    <a href="#" class="social-link" title="ВКонтакте"><img src="img/vk-svgrepo-com.svg" alt="" width="16" height="16"> VK</a>
+                    <a href="#" class="social-link" title="Telegram"><img src="img/telegram-svgrepo-com.svg" alt="" width="16" height="16"> TG</a>
+                    <a href="#" class="social-link" title="Максим"><img src="img/Max_logo (1).svg" alt="" width="16" height="16"> Макс</a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__heading">Навигация</h4>
+                <a href="index.html" class="footer__link">Главная</a>
+                <a href="catalog.html" class="footer__link">Каталог туров</a>
+                <a href="gallery.html" class="footer__link">Галерея</a>
+                <a href="contacts.html" class="footer__link">Контакты</a>
+            </div>
+            <div class="footer__col">
+                <h4 class="footer__heading">Контакты</h4>
+                <p class="footer__link">г. Краснодар, ул. Красная, 1</p>
+                <p class="footer__link">8 800 555-55-55</p>
+                <p class="footer__link">info@travelme.ru</p>
+                <p class="footer__link">Пн-Вс: 9:00–21:00</p>
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+<!-- модальное окно входа -->
+<div class="modal-overlay hidden" id="authModal">
+    <div class="modal">
+        <button class="modal__close" id="closeModal">✕</button>
+        <div class="modal__tabs">
+            <button class="modal__tab active" id="tabLogin">Войти</button>
+            <button class="modal__tab" id="tabReg">Регистрация</button>
+        </div>
+        <form id="loginForm" class="modal__form">
+            <h3>Вход в аккаунт</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="your@email.com">
+                <span class="form-error" id="loginEmailErr"></span>
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="loginPass" placeholder="Пароль">
+                <span class="form-error" id="loginPassErr"></span>
+            </div>
+            <button type="submit" class="btn-primary w100">Войти</button>
+            <span class="form-error" id="loginErr"></span>
+        </form>
+        <form id="regForm" class="modal__form hidden">
+            <h3>Создать аккаунт</h3>
+            <div class="form-group">
+                <label>Имя</label>
+                <input type="text" id="regName" placeholder="Ваше имя">
+                <span class="form-error" id="regNameErr"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="regEmail" placeholder="your@email.com">
+                <span class="form-error" id="regEmailErr"></span>
+            </div>
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="regPass" placeholder="Минимум 6 символов">
+                <span class="form-error" id="regPassErr"></span>
+            </div>
+            <div class="form-group">
+                <label>Повторите пароль</label>
+                <input type="password" id="regPass2">
+                <span class="form-error" id="regPass2Err"></span>
+            </div>
+            <button type="submit" class="btn-primary w100">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="js/auth.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

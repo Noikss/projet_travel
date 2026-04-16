@@ -1,0 +1,70 @@
+/* подвал */
+.footer {
+    background: var(--dark);
+    color: rgba(255,255,255,.7);
+    padding-top: 60px;
+    margin-top: auto;
+}
+
+.footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+}
+
+.footer__desc {
+    font-size: .88rem;
+    color: rgba(255,255,255,.55);
+    margin: 14px 0 20px;
+    line-height: 1.7;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 10px;
+}
+
+.social-link {
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: .78rem;
+    padding: 7px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background var(--tr);
+}
+
+.social-link svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+.social-link:hover { background: var(--teal); }
+
+.footer__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: .9rem;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.footer__link {
+    display: block;
+    font-size: .88rem;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 10px;
+    transition: color var(--tr);
+}
+
+.footer__link:hover { color: var(--teal); }
+
+.footer__bottom {
+    padding: 20px 0;
+    text-align: center;
+    font-size: .82rem;
+    color: rgba(255,255,255,.35);
+}
